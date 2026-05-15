@@ -1,0 +1,138 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body{
+    height: 100%;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
+}
+
+/* ROOT VARIABLES */
+:root{
+    --space-xsm: 4px;
+    --space-sm: 8px;
+    --space-m: 16px;
+    --space-lg: 20px;
+    --space-xl: 30px;
+    --space-2xl: 40px;
+    --space-3xl: 50px;
+
+    --primary-color: rgb(24, 24, 24);
+    --secondary-color: silver;
+    --text-color: beige;
+    --food-color: rgb(172, 4, 4);
+
+    --border-sm: 1px;
+    --border-m: 2px;
+    --border-lg: 4px;
+    --border-xl: 8px;
+    --border-2xl: 16px;
+
+    --border-primary-color: rgb(56, 56, 56);
+    --border-secondary-color: navy;
+}
+
+section{
+    padding: var(--space-2xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+    height: 100vh;
+}
+
+section .infos{
+    display: flex;
+    justify-content: space-around;
+}
+
+.info{
+    padding: var(--space-sm) var(--space-m);
+    border: var(--border-sm) solid var(--secondary-color);
+    border-radius: var(--border-lg);
+}
+
+.board{
+    flex-grow: 1;
+    border: var(--border-m) solid var(--border-primary-color);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(30px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(30px, 1fr));
+}
+
+/* GRID BOX */
+.box{
+    border: var(--border-sm) solid var(--border-primary-color);
+}
+
+/* SNAKE BODY */
+.fill{
+    background-color: var(--secondary-color);
+    border-radius: 0; /* body square */
+}
+
+/* SNAKE HEAD */
+.head{
+    background-color: limegreen;
+    border-radius: 50%; /* rounded head */
+}
+
+/* FOOD */
+.food{
+    background-color: var(--food-color);
+    border-radius: 50%; /* rounded food */
+}
+
+/* MODAL */
+.modal{
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgba(24, 24, 24, 0.6);
+    backdrop-filter: blur(6px);
+
+    display: none; /* hide by default */
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.modal.active{
+    display: flex; /* show only when active */
+}
+
+/* START / GAME OVER BOX */
+.start-game,
+.game-over{
+    background-color: rgb(30, 30, 30);
+    padding: var(--space-xl);
+    border-radius: var(--border-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-m);
+}
+
+.btn{
+    padding: 14px 24px;
+    border: none;
+    border-radius: var(--border-lg);
+    cursor: pointer;
+    font-size: 16px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.btn:hover{
+    transform: scale(1.1);
+}
+
+/* GAME OVER HIDDEN BY DEFAULT */
+.game-over{
+    display: none;
+}
